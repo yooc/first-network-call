@@ -15,14 +15,12 @@ class NetworkCallViewController: UIViewController {
 
 extension NetworkCallViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        print("Number of Rows")
         return dataModel.numberofRows
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "songCell", for: indexPath)
         cell.textLabel?.text = dataModel.songName(at: indexPath.row)
-        print("Cell for Row")
         return cell
     }
 }

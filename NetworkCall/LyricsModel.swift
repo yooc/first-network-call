@@ -25,16 +25,20 @@ final class LyricsModel {
     }
     
     func artist(at index: Int) -> String? {
-        return songList[index].artist
+        return songs[index].artist
     }
     
     func songName(at index: Int) -> String? {
-        return songList[index].songTitle
+        return songs[index].title
+    }
+    
+    func songLyrics(at index: Int) -> String? {
+        return songs[index].lyrics
     }
 }
 
-class Track {
-    var artist: String = ""
-    var title: String = ""
-    var lyrics: String = ""
+struct Track {
+    var artist: String
+    var title: String
+    var lyrics: String
 }
