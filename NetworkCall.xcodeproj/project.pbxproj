@@ -8,11 +8,13 @@
 
 /* Begin PBXBuildFile section */
 		F9A229AB20478B0000F6AE51 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9A229AA20478B0000F6AE51 /* AppDelegate.swift */; };
-		F9A229AD20478B0000F6AE51 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9A229AC20478B0000F6AE51 /* ViewController.swift */; };
+		F9A229AD20478B0000F6AE51 /* NetworkCallViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9A229AC20478B0000F6AE51 /* NetworkCallViewController.swift */; };
 		F9A229B020478B0000F6AE51 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F9A229AE20478B0000F6AE51 /* Main.storyboard */; };
 		F9A229B220478B0000F6AE51 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F9A229B120478B0000F6AE51 /* Assets.xcassets */; };
 		F9A229B520478B0000F6AE51 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F9A229B320478B0000F6AE51 /* LaunchScreen.storyboard */; };
 		F9A229C020478B0000F6AE51 /* NetworkCallTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9A229BF20478B0000F6AE51 /* NetworkCallTests.swift */; };
+		F9DDF52D204B76BA00A8370B /* LyricsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9DDF52C204B76BA00A8370B /* LyricsModel.swift */; };
+		F9DDF52F204B76CA00A8370B /* LyricsDataFetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9DDF52E204B76CA00A8370B /* LyricsDataFetcher.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -28,7 +30,7 @@
 /* Begin PBXFileReference section */
 		F9A229A720478B0000F6AE51 /* NetworkCall.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NetworkCall.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F9A229AA20478B0000F6AE51 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		F9A229AC20478B0000F6AE51 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		F9A229AC20478B0000F6AE51 /* NetworkCallViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkCallViewController.swift; sourceTree = "<group>"; };
 		F9A229AF20478B0000F6AE51 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		F9A229B120478B0000F6AE51 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		F9A229B420478B0000F6AE51 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -36,6 +38,8 @@
 		F9A229BB20478B0000F6AE51 /* NetworkCallTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = NetworkCallTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		F9A229BF20478B0000F6AE51 /* NetworkCallTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkCallTests.swift; sourceTree = "<group>"; };
 		F9A229C120478B0000F6AE51 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		F9DDF52C204B76BA00A8370B /* LyricsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LyricsModel.swift; sourceTree = "<group>"; };
+		F9DDF52E204B76CA00A8370B /* LyricsDataFetcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LyricsDataFetcher.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -77,12 +81,11 @@
 		F9A229A920478B0000F6AE51 /* NetworkCall */ = {
 			isa = PBXGroup;
 			children = (
-				F9A229AA20478B0000F6AE51 /* AppDelegate.swift */,
-				F9A229AC20478B0000F6AE51 /* ViewController.swift */,
+				F9A229CA20478B0D00F6AE51 /* Supporting Files */,
+				F9A229AC20478B0000F6AE51 /* NetworkCallViewController.swift */,
+				F9DDF52C204B76BA00A8370B /* LyricsModel.swift */,
+				F9DDF52E204B76CA00A8370B /* LyricsDataFetcher.swift */,
 				F9A229AE20478B0000F6AE51 /* Main.storyboard */,
-				F9A229B120478B0000F6AE51 /* Assets.xcassets */,
-				F9A229B320478B0000F6AE51 /* LaunchScreen.storyboard */,
-				F9A229B620478B0000F6AE51 /* Info.plist */,
 			);
 			path = NetworkCall;
 			sourceTree = "<group>";
@@ -94,6 +97,17 @@
 				F9A229C120478B0000F6AE51 /* Info.plist */,
 			);
 			path = NetworkCallTests;
+			sourceTree = "<group>";
+		};
+		F9A229CA20478B0D00F6AE51 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				F9A229AA20478B0000F6AE51 /* AppDelegate.swift */,
+				F9A229B120478B0000F6AE51 /* Assets.xcassets */,
+				F9A229B320478B0000F6AE51 /* LaunchScreen.storyboard */,
+				F9A229B620478B0000F6AE51 /* Info.plist */,
+			);
+			path = "Supporting Files";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -199,8 +213,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F9A229AD20478B0000F6AE51 /* ViewController.swift in Sources */,
+				F9A229AD20478B0000F6AE51 /* NetworkCallViewController.swift in Sources */,
+				F9DDF52D204B76BA00A8370B /* LyricsModel.swift in Sources */,
 				F9A229AB20478B0000F6AE51 /* AppDelegate.swift in Sources */,
+				F9DDF52F204B76CA00A8370B /* LyricsDataFetcher.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -355,7 +371,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 537944W876;
-				INFOPLIST_FILE = NetworkCall/Info.plist;
+				INFOPLIST_FILE = "$(SRCROOT)/NetworkCall/Supporting Files/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.cyoo.NetworkCall;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -370,7 +386,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 537944W876;
-				INFOPLIST_FILE = NetworkCall/Info.plist;
+				INFOPLIST_FILE = "$(SRCROOT)/NetworkCall/Supporting Files/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.cyoo.NetworkCall;
 				PRODUCT_NAME = "$(TARGET_NAME)";
