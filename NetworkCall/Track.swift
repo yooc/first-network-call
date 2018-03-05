@@ -11,9 +11,9 @@ class Track: Hashable {
     var title: String
     var lyrics: String
     
-    init(artist: String, title: String) {
+    init(artist: String, title: String, lyrics: String) {
         self.artist = artist
         self.title = title
-        self.lyrics = ""
+        self.lyrics = lyrics
     }
 }

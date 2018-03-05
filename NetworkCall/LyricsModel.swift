@@ -7,7 +7,7 @@ final class LyricsModel {
     
     weak var dataAvailableDelegate: DataAvailableDelegate?
     
-    let firstTrack = Track(artist: "Coldplay", title: "Paradise")
+    let firstTrack = Track(artist: "Coldplay", title: "Paradise", lyrics: "")
     
     private var songs = [Track]()
     

@@ -1,11 +1,10 @@
 import Foundation
 
-typealias JsonDictionary = [Track: Any]
+typealias JsonDictionary = (String, Any)
 
 class LyricsDataFetcher {
     func fetchLyrics(track: Track, completion: @escaping ([Track]) -> ()) {
-        let baseURL = "https://api.lyrics.ovh/v1/"
-        guard let lyricsURL = URL(string: "\(baseURL)/ \(track.artist)/ \(track.title)") else {
+        guard let lyricsURL = URL(string: "https://api.lyrics.ovh/v1/\(track.artist)/\(track.title)") else {
             print("URL did not instantiate")
             completion([])
             return
@@ -28,7 +27,7 @@ class LyricsDataFetcher {
                 return
             }
             
-            guard let songData = jsonData as? [[Track: Any]] else {
+            guard let songData = jsonData as? (String, Any) else {
                 print("Data was not an array of dictionaries")
                 DispatchQueue.main.async {
                     completion([])
@@ -36,14 +35,12 @@ class LyricsDataFetcher {
                 return
             }
             
-            let tracks = songData.flatMap { songDictionary in
-                guard let lyrics = songDictionary["lyrics"] as? String else { return nil }
-                let newTrack = Track(artist: track.artist, title: track.title, lyrics: lyrics)
-                return newTrack
-            }
+            let allLyrics = songData.1
             
+            let newTrack = Track(artist: track.artist, title: track.title, lyrics: allLyrics as! String)
+
             DispatchQueue.main.async {
-                completion(tracks)
+                completion([newTrack])
             }
         }
         
