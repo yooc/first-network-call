@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		F90DA58A204D256B00FF571E /* Track.swift in Sources */ = {isa = PBXBuildFile; fileRef = F90DA589204D256B00FF571E /* Track.swift */; };
 		F9A229AB20478B0000F6AE51 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9A229AA20478B0000F6AE51 /* AppDelegate.swift */; };
 		F9A229AD20478B0000F6AE51 /* NetworkCallViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9A229AC20478B0000F6AE51 /* NetworkCallViewController.swift */; };
 		F9A229B020478B0000F6AE51 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F9A229AE20478B0000F6AE51 /* Main.storyboard */; };
@@ -28,6 +29,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		F90DA589204D256B00FF571E /* Track.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Track.swift; sourceTree = "<group>"; };
 		F9A229A720478B0000F6AE51 /* NetworkCall.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NetworkCall.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F9A229AA20478B0000F6AE51 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F9A229AC20478B0000F6AE51 /* NetworkCallViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkCallViewController.swift; sourceTree = "<group>"; };
@@ -84,6 +86,7 @@
 				F9A229CA20478B0D00F6AE51 /* Supporting Files */,
 				F9A229AC20478B0000F6AE51 /* NetworkCallViewController.swift */,
 				F9DDF52C204B76BA00A8370B /* LyricsModel.swift */,
+				F90DA589204D256B00FF571E /* Track.swift */,
 				F9DDF52E204B76CA00A8370B /* LyricsDataFetcher.swift */,
 				F9A229AE20478B0000F6AE51 /* Main.storyboard */,
 			);
@@ -214,6 +217,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				F9A229AD20478B0000F6AE51 /* NetworkCallViewController.swift in Sources */,
+				F90DA58A204D256B00FF571E /* Track.swift in Sources */,
 				F9DDF52D204B76BA00A8370B /* LyricsModel.swift in Sources */,
 				F9A229AB20478B0000F6AE51 /* AppDelegate.swift in Sources */,
 				F9DDF52F204B76CA00A8370B /* LyricsDataFetcher.swift in Sources */,

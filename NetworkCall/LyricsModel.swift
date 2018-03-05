@@ -7,14 +7,14 @@ final class LyricsModel {
     
     weak var dataAvailableDelegate: DataAvailableDelegate?
     
-    private var songList = [(artist: "Coldplay", songTitle: "Paradise"), (artist: "Gallant", songTitle: "Counting")]
+    let firstTrack = Track(artist: "Coldplay", title: "Paradise")
     
     private var songs = [Track]()
     
     init() {
         dataFetcher = LyricsDataFetcher()
         
-        dataFetcher.fetchLyrics { [weak self] (songNames) in
+        dataFetcher.fetchLyrics(track: firstTrack) { [weak self] (songNames) in
             self?.songs = songNames
             self?.dataAvailableDelegate?.dataAvailable()
         }
@@ -35,10 +35,4 @@ final class LyricsModel {
     func songLyrics(at index: Int) -> String? {
         return songs[index].lyrics
     }
-}
-
-struct Track {
-    var artist: String
-    var title: String
-    var lyrics: String
 }
