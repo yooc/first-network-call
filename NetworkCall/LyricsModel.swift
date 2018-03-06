@@ -9,25 +9,28 @@ final class LyricsModel {
     
     weak var dataAvailableDelegate: DataAvailableDelegate?
     
-    let tracks = [[
+    let tracks = [
         Track(artist: "Coldplay", title: "Paradise", lyrics: ""),
         Track(artist: "Ed Sheeran", title: "Dive", lyrics: ""),
         Track(artist: "Calvin Harris", title: "Slide", lyrics: ""),
         Track(artist: "Gallant", title: "Counting", lyrics: ""),
         Track(artist: "dvsn", title: "Hallucinations", lyrics: ""),
         Track(artist: "Young the Giant", title: "Crystallized", lyrics: ""),
-        Track(artist: "Luis Fonsi", title: "Despacito", lyrics: "")
-        ]]
+        Track(artist: "Camila", title: "Todo Cambio", lyrics: "")
+        ]
     
     private var songs = [Track]()
     
     init() {
         dataFetcher = LyricsDataFetcher()
         
-        dataFetcher.fetchLyrics(trackArray: tracks) { [weak self] (songNames) in
-            self?.songs = songNames
-            self?.dataAvailableDelegate?.dataAvailable()
+        for t in tracks {
+            dataFetcher.fetchLyrics(track: t) { [weak self] (songNames) in
+                self?.songs = songNames
+                self?.dataAvailableDelegate?.dataAvailable()
+            }
         }
+        
     }
     
     var numberofRows: Int {

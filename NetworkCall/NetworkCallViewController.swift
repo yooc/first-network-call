@@ -22,16 +22,16 @@ class NetworkCallViewController: UIViewController {
 //MARK: - UITableViewDataSource
 extension NetworkCallViewController: UITableViewDataSource {
     func numberOfSections(in tableView: UITableView) -> Int {
-        return dataModel.tracks.count
+        return 1
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return dataModel.tracks[section].count
+        return dataModel.tracks.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "songCell") else { return UITableViewCell() }
-        cell.textLabel?.text = dataModel.tracks[indexPath.section][indexPath.row].title
+        cell.textLabel?.text = "\(dataModel.tracks[indexPath.row].title) - \(dataModel.tracks[indexPath.row].artist)"
         return cell
     }
 }
@@ -44,6 +44,6 @@ extension NetworkCallViewController: DataAvailableDelegate {
 
 extension NetworkCallViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        performSegue(withIdentifier: "showLyrics", sender: dataModel.songLyrics(at: indexPath.row))
+        performSegue(withIdentifier: "showLyrics", sender: dataModel.songLyrics(at: indexPath.section))
     }
 }

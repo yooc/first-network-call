@@ -3,8 +3,39 @@ import Foundation
 typealias JsonDictionary = [String: Any]
 
 class LyricsDataFetcher {
-    func fetchLyrics(trackArray: [[Track]], completion: @escaping ([Track]) -> ()) {
-        guard let lyricsURL = URL(string: "https://api.lyrics.ovh/v1/\(trackArray[0][0].artist)/\(trackArray[0][0].title)") else {
+    func convertWhiteSpace(str: String) -> String {
+        let spaces = NSCharacterSet.whitespaces
+        var convertedString = ""
+        
+        var strCodeUnits = [UnicodeScalar]()
+        for codeUnit in str.unicodeScalars {
+            strCodeUnits.append(codeUnit)
+        }
+        
+        for unit in strCodeUnits {
+            if spaces.contains(unit) {
+                convertedString.append("%20")
+            } else {
+                convertedString.append(unit.escaped(asASCII: false))
+            }
+        }
+        return convertedString
+    }
+    
+    func buildURL(track: Track) -> String {
+        let baseURL = "https://api.lyrics.ovh/v1/"
+        let artist = track.artist
+        let title = track.title
+        
+        let artistNoWhiteSpace = convertWhiteSpace(str: artist)
+        
+        let titleNoWhiteSpace = convertWhiteSpace(str: title)
+        
+        return baseURL + "\(artistNoWhiteSpace)/\(titleNoWhiteSpace)"
+    }
+    
+    func fetchLyrics(track: Track, completion: @escaping ([Track]) -> ()) {
+        guard let lyricsURL = URL(string: buildURL(track: track)) else {
             print("URL did not instantiate")
             completion([])
             return
@@ -20,6 +51,7 @@ class LyricsDataFetcher {
             }
             
             guard let jsonData = try? JSONSerialization.jsonObject(with: data, options: .allowFragments)  else {
+                print(lyricsURL)
                 print("JSON serialization failed")
                 DispatchQueue.main.async {
                     completion([])
@@ -40,17 +72,14 @@ class LyricsDataFetcher {
                 return lyric
             }
             
-            let newTrack = Track(artist: trackArray[0][0].artist, title: trackArray[0][0].title, lyrics: allLyrics[0])
-//            print("Artist: \(newTrack.artist)")
-//            print("Title: \(newTrack.title)")
-//            print("Lyrics: \(newTrack.lyrics)")
-
+            let newTrack = Track(artist: track.artist, title: track.title, lyrics: allLyrics[0])
+            
             DispatchQueue.main.async {
                 completion([newTrack])
             }
         }
-        
         task.resume()
+        
     }
 }
 
