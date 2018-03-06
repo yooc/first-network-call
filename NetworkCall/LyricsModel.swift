@@ -1,3 +1,5 @@
+import Foundation
+
 protocol DataAvailableDelegate: class {
     func dataAvailable()
 }
@@ -7,21 +9,29 @@ final class LyricsModel {
     
     weak var dataAvailableDelegate: DataAvailableDelegate?
     
-    let firstTrack = Track(artist: "Coldplay", title: "Paradise", lyrics: "")
+    let tracks = [[
+        Track(artist: "Coldplay", title: "Paradise", lyrics: ""),
+        Track(artist: "Ed Sheeran", title: "Dive", lyrics: ""),
+        Track(artist: "Calvin Harris", title: "Slide", lyrics: ""),
+        Track(artist: "Gallant", title: "Counting", lyrics: ""),
+        Track(artist: "dvsn", title: "Hallucinations", lyrics: ""),
+        Track(artist: "Young the Giant", title: "Crystallized", lyrics: ""),
+        Track(artist: "Luis Fonsi", title: "Despacito", lyrics: "")
+        ]]
     
     private var songs = [Track]()
     
     init() {
         dataFetcher = LyricsDataFetcher()
         
-        dataFetcher.fetchLyrics(track: firstTrack) { [weak self] (songNames) in
+        dataFetcher.fetchLyrics(trackArray: tracks) { [weak self] (songNames) in
             self?.songs = songNames
             self?.dataAvailableDelegate?.dataAvailable()
         }
     }
     
     var numberofRows: Int {
-        return songs.count
+        return tracks.count
     }
     
     func artist(at index: Int) -> String? {

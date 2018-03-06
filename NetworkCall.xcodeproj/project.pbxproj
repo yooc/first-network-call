@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		F90DA58A204D256B00FF571E /* Track.swift in Sources */ = {isa = PBXBuildFile; fileRef = F90DA589204D256B00FF571E /* Track.swift */; };
+		F980B93F204E32C200FC2A09 /* Lyrics.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F980B93E204E32C200FC2A09 /* Lyrics.storyboard */; };
+		F980B941204E338E00FC2A09 /* LyricsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F980B940204E338E00FC2A09 /* LyricsViewController.swift */; };
 		F9A229AB20478B0000F6AE51 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9A229AA20478B0000F6AE51 /* AppDelegate.swift */; };
 		F9A229AD20478B0000F6AE51 /* NetworkCallViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9A229AC20478B0000F6AE51 /* NetworkCallViewController.swift */; };
 		F9A229B020478B0000F6AE51 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F9A229AE20478B0000F6AE51 /* Main.storyboard */; };
@@ -30,6 +32,8 @@
 
 /* Begin PBXFileReference section */
 		F90DA589204D256B00FF571E /* Track.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Track.swift; sourceTree = "<group>"; };
+		F980B93E204E32C200FC2A09 /* Lyrics.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Lyrics.storyboard; sourceTree = "<group>"; };
+		F980B940204E338E00FC2A09 /* LyricsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LyricsViewController.swift; sourceTree = "<group>"; };
 		F9A229A720478B0000F6AE51 /* NetworkCall.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NetworkCall.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F9A229AA20478B0000F6AE51 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F9A229AC20478B0000F6AE51 /* NetworkCallViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkCallViewController.swift; sourceTree = "<group>"; };
@@ -62,6 +66,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		F980B942204E390C00FC2A09 /* Lyrics */ = {
+			isa = PBXGroup;
+			children = (
+				F980B940204E338E00FC2A09 /* LyricsViewController.swift */,
+				F980B93E204E32C200FC2A09 /* Lyrics.storyboard */,
+			);
+			path = Lyrics;
+			sourceTree = "<group>";
+		};
 		F9A2299E20478B0000F6AE51 = {
 			isa = PBXGroup;
 			children = (
@@ -89,6 +102,7 @@
 				F90DA589204D256B00FF571E /* Track.swift */,
 				F9DDF52E204B76CA00A8370B /* LyricsDataFetcher.swift */,
 				F9A229AE20478B0000F6AE51 /* Main.storyboard */,
+				F980B942204E390C00FC2A09 /* Lyrics */,
 			);
 			path = NetworkCall;
 			sourceTree = "<group>";
@@ -198,6 +212,7 @@
 			files = (
 				F9A229B520478B0000F6AE51 /* LaunchScreen.storyboard in Resources */,
 				F9A229B220478B0000F6AE51 /* Assets.xcassets in Resources */,
+				F980B93F204E32C200FC2A09 /* Lyrics.storyboard in Resources */,
 				F9A229B020478B0000F6AE51 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -216,6 +231,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F980B941204E338E00FC2A09 /* LyricsViewController.swift in Sources */,
 				F9A229AD20478B0000F6AE51 /* NetworkCallViewController.swift in Sources */,
 				F90DA58A204D256B00FF571E /* Track.swift in Sources */,
 				F9DDF52D204B76BA00A8370B /* LyricsModel.swift in Sources */,
