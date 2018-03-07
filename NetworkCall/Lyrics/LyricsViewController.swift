@@ -5,10 +5,10 @@ class LyricsViewController: UIViewController {
     let model = LyricsModel()
     var lyricsText = ""
 
-    @IBOutlet weak var LyricsLabel: UILabel!
+    @IBOutlet weak var LyricsTextView: UITextView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        LyricsLabel.text = lyricsText
+        LyricsTextView.text = lyricsText
     }
 }

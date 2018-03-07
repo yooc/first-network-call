@@ -36,14 +36,16 @@ extension NetworkCallViewController: UITableViewDataSource {
     }
 }
 
+//MARK: - DataAvailableDelegate
 extension NetworkCallViewController: DataAvailableDelegate {
     func dataAvailable() {
         tableView.reloadData()
     }
 }
 
+//MARK: - UITableViewDelegate
 extension NetworkCallViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        performSegue(withIdentifier: "showLyrics", sender: dataModel.songLyrics(at: indexPath.section))
+        performSegue(withIdentifier: "showLyrics", sender: dataModel.songLyrics(at: indexPath.row))
     }
 }

@@ -25,8 +25,8 @@ final class LyricsModel {
         dataFetcher = LyricsDataFetcher()
         
         for t in tracks {
-            dataFetcher.fetchLyrics(track: t) { [weak self] (songNames) in
-                self?.songs = songNames
+            dataFetcher.fetchLyrics(track: t) { [weak self] (song) in
+                self?.songs.append(song)
                 self?.dataAvailableDelegate?.dataAvailable()
             }
         }
@@ -35,14 +35,6 @@ final class LyricsModel {
     
     var numberofRows: Int {
         return tracks.count
-    }
-    
-    func artist(at index: Int) -> String? {
-        return songs[index].artist
-    }
-    
-    func songName(at index: Int) -> String? {
-        return songs[index].title
     }
     
     func songLyrics(at index: Int) -> String? {

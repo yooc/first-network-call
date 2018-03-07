@@ -28,16 +28,15 @@ class LyricsDataFetcher {
         let title = track.title
         
         let artistNoWhiteSpace = convertWhiteSpace(str: artist)
-        
         let titleNoWhiteSpace = convertWhiteSpace(str: title)
         
         return baseURL + "\(artistNoWhiteSpace)/\(titleNoWhiteSpace)"
     }
     
-    func fetchLyrics(track: Track, completion: @escaping ([Track]) -> ()) {
+    func fetchLyrics(track: Track, completion: @escaping (Track) -> ()) {
         guard let lyricsURL = URL(string: buildURL(track: track)) else {
             print("URL did not instantiate")
-            completion([])
+            completion(Track(artist: "", title: "", lyrics: ""))
             return
         }
         
@@ -45,7 +44,7 @@ class LyricsDataFetcher {
             guard let data = data else {
                 print("No data")
                 DispatchQueue.main.async {
-                    completion([])
+                    completion(Track(artist: "", title: "", lyrics: ""))
                 }
                 return
             }
@@ -54,7 +53,7 @@ class LyricsDataFetcher {
                 print(lyricsURL)
                 print("JSON serialization failed")
                 DispatchQueue.main.async {
-                    completion([])
+                    completion(Track(artist: "", title: "", lyrics: ""))
                 }
                 return
             }
@@ -62,7 +61,7 @@ class LyricsDataFetcher {
             guard let songData = [jsonData] as? [[String: Any]] else {
                 print("Data was not an array of dictionaries")
                 DispatchQueue.main.async {
-                    completion([])
+                    completion(Track(artist: "", title: "", lyrics: ""))
                 }
                 return
             }
@@ -75,11 +74,9 @@ class LyricsDataFetcher {
             let newTrack = Track(artist: track.artist, title: track.title, lyrics: allLyrics[0])
             
             DispatchQueue.main.async {
-                completion([newTrack])
+                completion(newTrack)
             }
         }
         task.resume()
-        
     }
 }
-

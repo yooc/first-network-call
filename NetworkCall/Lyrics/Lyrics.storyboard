@@ -18,24 +18,26 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Xf1-wj-w0f">
-                                <rect key="frame" x="166.5" y="30" width="42" height="627"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="rR8-Fk-maB">
+                                <rect key="frame" x="0.0" y="40" width="375" height="607"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="Xf1-wj-w0f" firstAttribute="centerX" secondItem="j9n-j3-tLP" secondAttribute="centerX" id="1nu-uO-off"/>
-                            <constraint firstItem="74u-9K-yeP" firstAttribute="bottom" secondItem="Xf1-wj-w0f" secondAttribute="bottom" constant="10" id="5YD-en-42c"/>
-                            <constraint firstItem="Xf1-wj-w0f" firstAttribute="centerX" secondItem="j9n-j3-tLP" secondAttribute="centerX" id="QhS-I5-Luf"/>
-                            <constraint firstItem="Xf1-wj-w0f" firstAttribute="top" secondItem="74u-9K-yeP" secondAttribute="top" constant="10" id="tJq-x0-GDx"/>
+                            <constraint firstItem="74u-9K-yeP" firstAttribute="bottom" secondItem="rR8-Fk-maB" secondAttribute="bottom" constant="20" id="7PH-hc-5dA"/>
+                            <constraint firstItem="rR8-Fk-maB" firstAttribute="top" secondItem="74u-9K-yeP" secondAttribute="top" constant="20" id="BUq-Ch-wdd"/>
+                            <constraint firstAttribute="trailing" secondItem="rR8-Fk-maB" secondAttribute="trailing" id="Ccy-Ed-BwO"/>
+                            <constraint firstItem="rR8-Fk-maB" firstAttribute="centerX" secondItem="74u-9K-yeP" secondAttribute="centerX" id="lU8-Jx-80q"/>
+                            <constraint firstItem="rR8-Fk-maB" firstAttribute="centerY" secondItem="74u-9K-yeP" secondAttribute="centerY" id="pyc-Pk-Z4h"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="74u-9K-yeP"/>
                     </view>
                     <connections>
-                        <outlet property="LyricsLabel" destination="Xf1-wj-w0f" id="WFC-1L-Z17"/>
+                        <outlet property="LyricsTextView" destination="rR8-Fk-maB" id="a0k-dJ-fPm"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="KhM-Lz-fA9" userLabel="First Responder" sceneMemberID="firstResponder"/>
