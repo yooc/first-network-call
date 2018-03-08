@@ -6,7 +6,6 @@ protocol DataAvailableDelegate: class {
 
 final class LyricsModel {
     private let dataFetcher: LyricsDataFetcher
-    
     weak var dataAvailableDelegate: DataAvailableDelegate?
     
     let tracks = [
@@ -17,20 +16,17 @@ final class LyricsModel {
         Track(artist: "dvsn", title: "Hallucinations", lyrics: ""),
         Track(artist: "Young the Giant", title: "Crystallized", lyrics: ""),
         Track(artist: "Camila", title: "Todo Cambio", lyrics: "")
-        ]
-    
-    private var songs = [Track]()
+    ]
     
     init() {
         dataFetcher = LyricsDataFetcher()
         
         for t in tracks {
-            dataFetcher.fetchLyrics(track: t) { [weak self] (song) in
-                self?.songs.append(song)
+            dataFetcher.fetchLyrics(track: t) { [weak self] (lyrics) in
+                t.lyrics = lyrics
                 self?.dataAvailableDelegate?.dataAvailable()
             }
         }
-        
     }
     
     var numberofRows: Int {
@@ -38,6 +34,6 @@ final class LyricsModel {
     }
     
     func songLyrics(at index: Int) -> String? {
-        return songs[index].lyrics
+        return tracks[index].lyrics
     }
 }

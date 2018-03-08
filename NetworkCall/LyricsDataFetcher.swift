@@ -1,8 +1,7 @@
 import Foundation
 
-typealias JsonDictionary = [String: Any]
-
 class LyricsDataFetcher {
+    
     func convertWhiteSpace(str: String) -> String {
         let spaces = NSCharacterSet.whitespaces
         var convertedString = ""
@@ -33,10 +32,10 @@ class LyricsDataFetcher {
         return baseURL + "\(artistNoWhiteSpace)/\(titleNoWhiteSpace)"
     }
     
-    func fetchLyrics(track: Track, completion: @escaping (Track) -> ()) {
+    func fetchLyrics(track: Track, completion: @escaping (String) -> ()) {
         guard let lyricsURL = URL(string: buildURL(track: track)) else {
             print("URL did not instantiate")
-            completion(Track(artist: "", title: "", lyrics: ""))
+            completion("")
             return
         }
         
@@ -44,7 +43,7 @@ class LyricsDataFetcher {
             guard let data = data else {
                 print("No data")
                 DispatchQueue.main.async {
-                    completion(Track(artist: "", title: "", lyrics: ""))
+                    completion("")
                 }
                 return
             }
@@ -53,7 +52,7 @@ class LyricsDataFetcher {
                 print(lyricsURL)
                 print("JSON serialization failed")
                 DispatchQueue.main.async {
-                    completion(Track(artist: "", title: "", lyrics: ""))
+                    completion("")
                 }
                 return
             }
@@ -61,7 +60,7 @@ class LyricsDataFetcher {
             guard let songData = [jsonData] as? [[String: Any]] else {
                 print("Data was not an array of dictionaries")
                 DispatchQueue.main.async {
-                    completion(Track(artist: "", title: "", lyrics: ""))
+                    completion("")
                 }
                 return
             }
@@ -71,10 +70,8 @@ class LyricsDataFetcher {
                 return lyric
             }
             
-            let newTrack = Track(artist: track.artist, title: track.title, lyrics: allLyrics[0])
-            
             DispatchQueue.main.async {
-                completion(newTrack)
+                completion(allLyrics[0])
             }
         }
         task.resume()

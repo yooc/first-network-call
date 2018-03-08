@@ -2,10 +2,9 @@ import UIKit
 
 class LyricsViewController: UIViewController {
 
-    let model = LyricsModel()
-    var lyricsText = ""
-
     @IBOutlet weak var LyricsTextView: UITextView!
+
+    var lyricsText = ""
     
     override func viewDidLoad() {
         super.viewDidLoad()
