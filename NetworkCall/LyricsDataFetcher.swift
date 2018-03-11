@@ -2,6 +2,10 @@ import Foundation
 
 class LyricsDataFetcher {
     
+    /// Helper method for building URL
+    ///
+    /// - Parameter str: String with spaces
+    /// - Returns: String with properly formatted white spaces
     func convertWhiteSpace(str: String) -> String {
         let spaces = NSCharacterSet.whitespaces
         var convertedString = ""
@@ -21,6 +25,10 @@ class LyricsDataFetcher {
         return convertedString
     }
     
+    /// Method for building URL from base api url
+    ///
+    /// - Parameter track: Track which has an artist and song title
+    /// - Returns: URL with appended search params to make API request against
     func buildURL(track: Track) -> String {
         let baseURL = "https://api.lyrics.ovh/v1/"
         let artist = track.artist
@@ -32,6 +40,12 @@ class LyricsDataFetcher {
         return baseURL + "\(artistNoWhiteSpace)/\(titleNoWhiteSpace)"
     }
     
+    
+    /// Method which makes GET request against API
+    ///
+    /// - Parameters:
+    ///   - track: Track to look up lyrics for
+    ///   - completion: returns lyrics of the Track given as input
     func fetchLyrics(track: Track, completion: @escaping (String) -> ()) {
         guard let lyricsURL = URL(string: buildURL(track: track)) else {
             print("URL did not instantiate")
@@ -65,13 +79,13 @@ class LyricsDataFetcher {
                 return
             }
             
-            let allLyrics = songData.flatMap { songDictionary in
-                guard let lyric = songDictionary["lyrics"] as? String else { return nil }
+            let lyricsData = songData.flatMap { lyricsDictionary in
+                guard let lyric = lyricsDictionary["lyrics"] as? String else { return nil }
                 return lyric
             }
             
             DispatchQueue.main.async {
-                completion(allLyrics[0])
+                completion(lyricsData[0])
             }
         }
         task.resume()
